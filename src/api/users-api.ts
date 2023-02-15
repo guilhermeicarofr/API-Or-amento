@@ -1,7 +1,9 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 
 import { User } from 'protocols/types';
 
+dotenv.config();
 const BASEURL = process.env.API_URL;
 const usersURL = `${BASEURL}/users`;
 
