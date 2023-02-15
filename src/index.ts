@@ -11,12 +11,14 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-server.get('/health', (req: Request, res: Response) => { 
+server.get('/health', (req: Request, res: Response) => {
+  /* eslint-disable-next-line no-console */
   console.log('OK');
   return res.status(httpStatus.OK).send('OK');
 });
 
 if(ENV !== 'test') {
+  /* eslint-disable-next-line no-console */
   server.listen(PORT, () => console.log(`Running on port ${PORT}...`));
 }
 
