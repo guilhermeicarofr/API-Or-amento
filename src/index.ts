@@ -3,6 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import httpStatus from 'http-status';
 
+import { getUsers } from 'controllers/users-controller';
+
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 const ENV = process.env.NODE_ENV;
@@ -16,6 +18,8 @@ server.get('/health', (req: Request, res: Response) => {
   console.log('OK');
   return res.status(httpStatus.OK).send('OK');
 });
+
+server.get('/users', getUsers);
 
 if(ENV !== 'test') {
   /* eslint-disable-next-line no-console */
