@@ -20,6 +20,6 @@ async function getById(userId: number): Promise<User> {
 const usersApi = {
   getAll,
   getById
-}
+};
 
 export { usersApi };

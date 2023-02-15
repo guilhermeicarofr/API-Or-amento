@@ -8,7 +8,6 @@ export async function getUsers(req: Request, res: Response) {
     const users = await listAllUsers();
     return res.status(httpStatus.OK).send(users);    
   } catch (error) {
-    console.log(error);
     if(error.name === 'FetchData') return res.status(httpStatus.NO_CONTENT).send(error.message);
     return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
   }
