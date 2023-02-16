@@ -6,3 +6,9 @@ export async function listAllProducts() {
   if(!products) throw errors.fetchDataError();
   return products;
 }
+
+export async function checkProductData(productId: number) {
+  const product = await productsApi.getById(productId);
+  if(!product) throw errors.notFoundError('product');
+  return product;
+}

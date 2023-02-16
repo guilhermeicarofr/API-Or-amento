@@ -6,3 +6,9 @@ export async function listAllUsers() {
   if(!users) throw errors.fetchDataError();
   return users;
 }
+
+export async function checkUserData(userId: number) {
+  const user = await usersApi.getById(userId);
+  if(!user) throw errors.notFoundError('user');
+  return user;
+}
