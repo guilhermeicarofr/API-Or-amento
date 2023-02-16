@@ -2,13 +2,19 @@ import { usersApi } from 'api/users-api';
 import { errors } from 'errors/errors';
 
 export async function listAllUsers() {
-  const users = await usersApi.getAll();
-  if(!users) throw errors.fetchDataError();
-  return users;
+  try {
+    const users = await usersApi.getAll();
+    return users; 
+  } catch (error) {
+    throw errors.fetchDataError();
+  }
 }
 
 export async function checkUserData(userId: number) {
-  const user = await usersApi.getById(userId);
-  if(!user) throw errors.notFoundError('user');
-  return user;
+  try {
+    const user = await usersApi.getById(userId);
+    return user;   
+  } catch (error) {
+    throw errors.notFoundError('user');
+  }
 }
