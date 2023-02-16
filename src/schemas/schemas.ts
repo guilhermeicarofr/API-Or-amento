@@ -7,7 +7,7 @@ const idParam = (idName: string) => {
 };
 
 const purchaseBody = joi.object({
-  products: joi.array().items(joi.number().integer().min(1))
+  products: joi.array().items(joi.number().positive().integer()).required()
 });
 
 const schemas = {
