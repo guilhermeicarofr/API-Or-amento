@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=run npx tsc && node ./dist/index.js",
+    "container:up": "sudo docker-compose up",
+    "container:down": "sudo docker-compose down -v",
+    "start": "NODE_ENV=run npx tsc && ts-node -r tsconfig-paths/register ./src/index.ts",
     "start:dev": "NODE_ENV=run npx tsc && nodemon --watch 'src/' --exec 'ts-node -r tsconfig-paths/register ./src/index.ts' -e ts",
     "test": "NODE_ENV=test jest --passWithNoTests -i",
-    "test:coverage": "NODE_ENV=test jest --passWithNoTests -i --coverage --collectCoverageFrom='./src/**'",
     "test:watch": "NODE_ENV=test jest --watch --passWithNoTests -i",
+    "test:coverage": "NODE_ENV=test jest --passWithNoTests -i --coverage --collectCoverageFrom='./src/**'",
     "lint": "eslint ./src/*/*",
     "lint:fix": "eslint ./src/*/* --fix"
   },

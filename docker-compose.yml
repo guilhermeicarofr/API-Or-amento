@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: app
+    ports:
+      - 4000:4000
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command:
+    - sh
+    - -c
+    - npm run start
