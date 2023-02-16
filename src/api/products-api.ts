@@ -18,6 +18,6 @@ async function getById(productId: number): Promise<Product> {
 const productsApi = {
   getAll,
   getById
-}
+};
 
 export { productsApi };
