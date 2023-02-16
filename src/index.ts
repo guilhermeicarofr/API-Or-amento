@@ -5,6 +5,8 @@ import httpStatus from 'http-status';
 
 import { getUsers } from 'controllers/users-controller';
 import { getProducts } from 'controllers/products-controllers';
+import { validateSchema } from 'middlewares/validation-middlewares';
+import { schemas } from 'schemas/schemas';
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -22,6 +24,10 @@ server.get('/health', (req: Request, res: Response) => {
 
 server.get('/users', getUsers);
 server.get('/products', getProducts);
+server.get('/purchase/estimate/user/:userId',
+  validateSchema(schemas.idParam('userId'), 'params'),
+  validateSchema(schemas.purchaseBody, 'body')  
+)
 
 if(ENV !== 'test') {
   /* eslint-disable-next-line no-console */
