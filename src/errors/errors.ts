@@ -7,8 +7,16 @@ function fetchDataError(): ApplicationError {
   };
 }
 
+function notFoundError(entity: string): ApplicationError {
+  return {
+    name: 'NotFound',
+    message: `Provided ${entity} not found`
+  };
+}
+
 const errors = {
-  fetchDataError
+  fetchDataError,
+  notFoundError
 };
 
 export { errors };
